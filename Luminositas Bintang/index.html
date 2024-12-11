@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulasi Luminositas Bintang</title>
+    <style>
+        /* Styling Umum */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 20px;
+        }
+
+        .content {
+            text-align: center;
+            margin: 20px;
+            font-size: 1.2rem;
+        }
+
+        .formula {
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 1.3rem;
+            background-color: #34495e;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .calculate-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .calculate-button:hover {
+            background-color: #2980b9;
+        }
+
+        #calculation-result {
+            font-size: 1.3rem;
+            margin-top: 20px;
+            color: #ecf0f1;
+        }
+
+        .input-section {
+            margin: 20px;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            font-size: 1rem;
+            margin: 10px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ecf0f1;
+            background-color: #34495e;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Kalkulasi Luminositas Bintang</h1>
+
+    <div class="content">
+        <p>Untuk menghitung luminositas bintang, kita dapat menggunakan persamaan Stefan-Boltzmann:</p>
+
+        <div class="formula">
+            <p><strong>Rumus Luminositas Bintang:</strong></p>
+            <p>L = 4πR²σT⁴</p>
+            <p>Dimana: <br>L = Luminositas bintang (dalam watt) <br>R = Radius bintang (dalam meter) <br>T = Temperatur efektif bintang (dalam Kelvin) <br>σ = Konstanta Stefan-Boltzmann (5.670 × 10⁻⁸ W·m⁻²·K⁻⁴)</p>
+        </div>
+
+        <div class="input-section">
+            <label for="radius">Masukkan radius bintang (dalam meter): </label>
+            <input type="number" id="radius" placeholder="Masukkan radius" step="any" required>
+        </div>
+
+        <div class="input-section">
+            <label for="temperature">Masukkan temperatur bintang (dalam Kelvin): </label>
+            <input type="number" id="temperature" placeholder="Masukkan temperatur" step="any" required>
+        </div>
+
+        <button class="calculate-button" onclick="calculateLuminosity()">Hitung Luminositas</button>
+
+        <div id="calculation-result"></div>
+    </div>
+
+    <footer>
+        <p>Ilustrasi perhitungan luminositas bintang menggunakan persamaan fisika Stefan-Boltzmann.</p>
+    </footer>
+
+    <script>
+        function calculateLuminosity() {
+            // Input dari pengguna
+            const radius = parseFloat(document.getElementById("radius").value);
+            const temperature = parseFloat(document.getElementById("temperature").value);
+
+            // Konstanta Stefan-Boltzmann (dalam W·m⁻²·K⁻⁴)
+            const sigma = 5.670e-8;
+
+            // Perhitungan luminositas menggunakan persamaan Stefan-Boltzmann
+            if (radius && temperature) {
+                const luminosity = 4 * Math.PI * Math.pow(radius, 2) * sigma * Math.pow(temperature, 4);
+                document.getElementById("calculation-result").innerHTML = `Luminositas bintang adalah ${luminosity.toExponential(2)} Watt.`;
+            } else {
+                document.getElementById("calculation-result").innerHTML = "Harap masukkan nilai radius dan temperatur bintang.";
+            }
+        }
+    </script>
+
+</body>
+</html>

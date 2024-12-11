@@ -1,0 +1,102 @@
+/* CSS untuk Big Star */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    background-color: black;
+}
+
+/* Header */
+header {
+    background-color: #222;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #ffffff;
+}
+
+/* Slider */
+.slider {
+    position: relative;
+    height: 400px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider h1 {
+    font-size: 36px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* Gallery */
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.gallery img {
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.1);
+}
+
+/* Footer Sections */
+.sections {
+    display: flex;
+    justify-content: space-around;
+    background-color: #333;
+    padding: 20px 0;
+}
+
+.section {
+    text-align: center;
+    max-width: 300px;
+}
+
+.section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.section p {
+    font-size: 14px;
+    line-height: 1.5;
+}

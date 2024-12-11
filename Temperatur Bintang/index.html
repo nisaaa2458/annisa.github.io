@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Temperatur Bintang</title>
+    <style>
+        /* Styling Umum */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #00007a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #6969fa;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #032e8a;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+
+        #temperature {
+            font-size: 20px;
+            font-weight: bold;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator Temperatur Bintang</h1>
+        <form id="star-form">
+            <label for="luminositas">Luminositas Bintang (L, dalam W):</label>
+            <input type="number" id="luminositas" required>
+            
+            <label for="radius">Radius Bintang (R, dalam meter):</label>
+            <input type="number" id="radius" required>
+            
+            <button type="submit">Hitung Temperatur</button>
+        </form>
+        
+        <div id="result">
+            <h2>Temperatur Permukaan Bintang:</h2>
+            <p id="temperature">-</p>
+        </div>
+    </div>
+
+    <script>
+        // script.js
+        document.getElementById('star-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Ambil nilai dari input
+            const luminositas = parseFloat(document.getElementById('luminositas').value);
+            const radius = parseFloat(document.getElementById('radius').value);
+            
+            // Validasi input
+            if (isNaN(luminositas) || isNaN(radius) || luminositas <= 0 || radius <= 0) {
+                alert("Harap masukkan nilai yang valid!");
+                return;
+            }
+
+            // Konstanta Stefan-Boltzmann
+            const sigma = 5.67e-8; // dalam W/m^2K^4
+
+            // Hitung temperatur menggunakan rumus Stefan-Boltzmann
+            const temperatur = Math.pow(luminositas / (4 * Math.PI * Math.pow(radius, 2) * sigma), 0.25);
+
+            // Tampilkan hasil
+            document.getElementById('temperature').textContent = `${temperatur.toFixed(2)} K`;
+        });
+    </script>
+</body>
+</html>
